@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 :root {
+  --primary-color: #3498db;
   --success-color: #2ecc71;
   --error-color: #e74c3c;
+  --bg-color: #f9fafb;
+  --container-bg: #fff;
+  --text-color: #333;
+  --label-color: #777;
+  --input-border: #f0f0f0;
+  --input-focus: #777;
 }
 
 * {
@@ -10,20 +17,22 @@
 }
 
 body {
-  background-color: #f9fafb;
+  background-color: var(--bg-color);
   font-family: 'Open Sans', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   margin: 0;
+  color: var(--text-color);
 }
 
 .container {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  width: 400px;
+  background-color: var(--container-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
 h2 {
@@ -42,23 +51,24 @@ h2 {
 }
 
 .form-control label {
-  color: #777;
+  color: var(--label-color);
   display: block;
   margin-bottom: 5px;
 }
 
 .form-control input {
-  border: 2px solid #f0f0f0;
+  border: 2px solid var(--input-border);
   border-radius: 4px;
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   font-size: 14px;
+  transition: border-color 0.3s ease;
 }
 
 .form-control input:focus {
   outline: 0;
-  border-color: #777;
+  border-color: var(--input-focus);
 }
 
 .form-control.success input {
@@ -75,6 +85,8 @@ h2 {
   bottom: 0;
   left: 0;
   visibility: hidden;
+  font-size: 12px;
+  transition: visibility 0.3s ease;
 }
 
 .form-control.error small {
@@ -83,13 +95,29 @@ h2 {
 
 .form button {
   cursor: pointer;
-  background-color: #3498db;
-  border: 2px solid #3498db;
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
   border-radius: 4px;
   color: #fff;
   display: block;
   font-size: 16px;
-  padding: 10px;
+  padding: 12px;
   margin-top: 20px;
   width: 100%;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+  .form {
+    padding: 20px 25px;
+  }
 }
